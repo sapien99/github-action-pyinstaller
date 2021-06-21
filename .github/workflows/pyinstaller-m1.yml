@@ -1,4 +1,4 @@
-name: Package exe with PyInstaller - Windows
+name: Package exe with PyInstaller - Macbook M1
 
 on:
   push:
@@ -10,7 +10,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+       shell: "/usr/bin/arch -arch arm64e /bin/bash {0}"
     steps:
     - uses: actions/checkout@v2
     - name: PyInstaller Windows
@@ -20,6 +22,6 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: launcher.exe
+        name: launcher
         path: src/dist/windows # or path/to/artifact
 
